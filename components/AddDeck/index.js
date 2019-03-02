@@ -2,7 +2,6 @@ import React from 'react'
 import { Button, Text, TextInput, TouchableOpacity, StyleSheet, View } from 'react-native'
 import { connect } from 'react-redux'
 
-
 import { savedDeckTitle } from '../../utils/api'
 import { addDeck } from '../../actions/decks'
 
@@ -16,11 +15,6 @@ class AddDeck extends React.Component {
     const { text } = this.state
 
     const { dispatch } = this.props
-
-    const deck = {
-      title: text,
-      questions: [],
-    }
 
     savedDeckTitle(text)
 
@@ -40,7 +34,7 @@ class AddDeck extends React.Component {
 
         <TextInput placeholder="Add deck name" style={styles.input} onChangeText={(text) => this.setState({ text: text })} value={text} />
         <TouchableOpacity
-          style={styles.button}
+          style={styles.buttonPrimary}
           onPress={this.addName}
         >
           <Text>Submit</Text>
@@ -56,11 +50,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center'
   },
-  button: {
+  buttonPrimary: {
     alignItems: 'center',
-    backgroundColor: '#DDDDDD',
+    backgroundColor: '#483D8B',
+    height: 40,
+    justifyContent: 'center',
+    marginTop: 20,
     padding: 10,
-    marginTop: 20
+    width: 150,
   },
   input: {
     height: 40, width: 100, borderColor: 'gray', padding: 10, marginTop: 20, borderWidth: 1

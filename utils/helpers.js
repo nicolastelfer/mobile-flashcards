@@ -5,6 +5,6 @@
  * addCardToDeck: take in two arguments, title and card, and will add the card to the list of questions for the deck with the associated title.
  */
 
-
-export const themeColorPrimary = 'purple'
-export const themeColorSecondary = 'blue'
+export const themeColorLight = '#FFFFFF'
+export const themeColorPrimary = '#483D8B'
+export const themeColorSecondary = '#6A5ACD'

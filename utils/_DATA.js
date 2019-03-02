@@ -26,5 +26,3 @@ const data = {
 export const getData = () => {
   return data
 }
-
-

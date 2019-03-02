@@ -1,7 +1,7 @@
 import React from 'react'
 import { StyleSheet, Platform, View } from 'react-native'
 import { createBottomTabNavigator, createAppContainer, createStackNavigator } from 'react-navigation'
-import { themeColorPrimary, themeColorSecondary } from './utils/helpers'
+import { themeColorPrimary, themeColorSecondary, themeColorLight } from './utils/helpers'
 
 // Redux imports
 import { createStore } from 'redux'
@@ -12,6 +12,7 @@ import middleware from './middleware'
 
 // Imports Components
 import DeckDashboard from './components/DeckDashboard'
+import AddCard from './components/AddCard'
 import AddDeck from './components/AddDeck'
 import IndividualDeck from './components/IndividualDeck'
 
@@ -39,7 +40,7 @@ const Tabs = createBottomTabNavigator({
     activeTintColor: themeColorPrimary,
     style: {
       height: 50,
-      backgroundColor: Platform.OS === 'ios' ? 'white' : 'blue'
+      backgroundColor: Platform.OS === 'ios' ? themeColorLight : themeColorSecondary
     }
   }
 })
@@ -57,6 +58,12 @@ const StackNavigator = createStackNavigator({
     navigationOptions: ({ navigation }) => ({
       title: `${navigation.state.params.entryId}'s Deck'`,
     })
+  },
+  AddCard: {
+    screen: AddCard,
+    navigationOptions: {
+      title: 'Add Card',
+    }
   }
 })
 
@@ -82,6 +89,7 @@ export default class App extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: themeColorLight,
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'flex-end',

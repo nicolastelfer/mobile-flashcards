@@ -16,10 +16,10 @@ export function getDecks() {
     })
 }
 
+
 export function savedDeckTitle(title) {
   getDecks()
     .then((decks) => {
-      console.log('DECKS! ===========> ', decks )
       return {
         ...decks,
         [title]: {
@@ -29,7 +29,23 @@ export function savedDeckTitle(title) {
       }
     })
     .then((newDecks) => {
-      console.log('NEW DECKS! ===========> ', newDecks )
       AsyncStorage.setItem(DECKS_STORAGE_KEY, JSON.stringify(newDecks))
+    })
+}
+
+export function addCardToDeck (title, card) {
+  getDecks()
+    .then((decks) => {
+      return {
+        ...decks,
+        [title]: {
+          title,
+          questions: decks[title].questions.concat([card])
+        }
+      }
+    })
+    .then((newDecks) => {
+      AsyncStorage.setItem(DECKS_STORAGE_KEY, JSON.stringify(newDecks))
+      return newDecks
     })
 }

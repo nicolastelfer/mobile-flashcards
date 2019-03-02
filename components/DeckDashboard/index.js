@@ -21,6 +21,7 @@ class DeckDashboard extends React.Component {
               return (
                 <View key={deck}>
                   <Text>{title}</Text>
+                  <Text>{questions.length}</Text>
 
                   <TouchableOpacity
                     style={styles.button}
