@@ -3,6 +3,13 @@ import { StyleSheet, Platform, View } from 'react-native'
 import { createBottomTabNavigator, createAppContainer, createStackNavigator } from 'react-navigation'
 import { themeColorPrimary, themeColorSecondary } from './utils/helpers'
 
+// Redux imports
+import { createStore } from 'redux'
+import { Provider } from 'react-redux'
+
+import reducer from './reducers'
+import middleware from './middleware'
+
 // Imports Components
 import DeckDashboard from './components/DeckDashboard'
 import AddDeck from './components/AddDeck'
@@ -56,14 +63,19 @@ const StackNavigator = createStackNavigator({
 // Wraps the tabs and the stack navigation inside a container (new in ReactNavigation 3.0)
 const MainNavigator = createAppContainer(StackNavigator)
 
+// Create the Redux Store using the defined Root Reducer and Middleware function(s)
+const store = createStore(reducer, middleware)
+
 export default class App extends React.Component {
   render() {
     return (
-      <View style={{ flex: 1, backgroundColor: 'blue' }}>
-        <View style={{ height: 20, flex: 1, backgroundColor: 'green' }}>
-          <MainNavigator/>
+      <Provider store={store}>
+        <View style={{ flex: 1, backgroundColor: 'blue' }}>
+          <View style={{ height: 20, flex: 1, backgroundColor: 'green' }}>
+            <MainNavigator/>
+          </View>
         </View>
-      </View>
+      </Provider>
     )
   }
 }
