@@ -55,7 +55,7 @@ const StackNavigator = createStackNavigator({
   IndividualDeck: {
     screen: IndividualDeck,
     navigationOptions: ({ navigation }) => ({
-      title: `${navigation.state.params.name}'s Deck'`,
+      title: `${navigation.state.params.entryId}'s Deck'`,
     })
   }
 })
@@ -70,8 +70,8 @@ export default class App extends React.Component {
   render() {
     return (
       <Provider store={store}>
-        <View style={{ flex: 1, backgroundColor: 'blue' }}>
-          <View style={{ height: 20, flex: 1, backgroundColor: 'green' }}>
+        <View style={{  flex: 1 }}>
+          <View style={styles.container}>
             <MainNavigator/>
           </View>
         </View>
@@ -83,8 +83,8 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    alignItems: 'flex-start',
+  }
 })

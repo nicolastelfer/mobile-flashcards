@@ -1,13 +1,18 @@
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
+import { connect } from 'react-redux'
 
 class IndividualDeck extends React.Component {
   render() {
-    const deckId = this.props.navigation.state.params.entryId
-    console.log(deckId)
+    const name = this.props.navigation.state.params.entryId
+    const { decks } = this.props
+
+    console.log('IN VIEW ============> ', name)
+    console.log('IN VIEW ============> ', decks[name])
     return (
       <View style={styles.container}>
-        <Text>This is the Individual Deck</Text>
+        <Text>{decks[name].title}</Text>
+        <Text>{decks[name].questions.length}</Text>
       </View>
     )
   }
@@ -22,4 +27,8 @@ const styles = StyleSheet.create({
   },
 })
 
-export default IndividualDeck
+function mapStateToProps({ decks }) {
+  return { decks }
+}
+
+export default connect(mapStateToProps)(IndividualDeck)
