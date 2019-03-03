@@ -1,5 +1,4 @@
 import React from 'react'
-import {Text, TouchableOpacity, StyleSheet, View } from 'react-native'
 
 import {
   Button,
@@ -7,10 +6,6 @@ import {
   ButtonText,
   ButtonLinkText,
   ContainerView,
-  FieldSetView,
-  Input,
-  KeyboardAvoidingView,
-  Label,
   TitleH1,
   TitleH4
 } from '../../utils/styles'

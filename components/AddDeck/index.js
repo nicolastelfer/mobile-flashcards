@@ -1,5 +1,5 @@
 import React from 'react'
-import { Text, TextInput, TouchableOpacity, StyleSheet, View } from 'react-native'
+import {  StyleSheet } from 'react-native'
 import { connect } from 'react-redux'
 
 import {
@@ -64,26 +64,6 @@ class AddDeck extends React.Component {
     )
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  buttonPrimary: {
-    alignItems: 'center',
-    backgroundColor: '#483D8B',
-    height: 40,
-    justifyContent: 'center',
-    marginTop: 20,
-    padding: 10,
-    width: 150,
-  },
-  input: {
-    height: 40, width: 100, borderColor: 'gray', padding: 10, marginTop: 20, borderWidth: 1
-  }
-})
 
 function mapStateToProps({ decks }) {
   return { decks }

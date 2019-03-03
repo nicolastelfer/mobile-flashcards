@@ -27,13 +27,15 @@ class IndividualDeck extends React.Component {
     navigation.navigate('Quiz', { entryId: name })
   }
 
-  handleRemoveQuiz = (name) => {
+  handleRemoveQuiz = (deck) => {
     const { dispatch, navigation, decks } = this.props
+    console.log(decks[deck.title], deck.title)
 
-    dispatch(removeDeck(name))
-    removeFromDeck(name)
+    removeFromDeck(deck.title)
 
-    navigation.dispatch(NavigationActions.back({ key: null }))
+    dispatch(removeDeck(deck.title))
+
+    navigation.dispatch(this.props.navigation.navigate('Home'))
   }
 
   render() {
@@ -65,7 +67,7 @@ class IndividualDeck extends React.Component {
 
         <Button
           buttonTheme='lighter'
-          onPress={() => this.handleRemoveQuiz(name)}>
+          onPress={() => this.handleRemoveQuiz(decks[name])}>
           <ButtonText>Remove Deck</ButtonText>
         </Button>
 

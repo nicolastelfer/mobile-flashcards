@@ -1,5 +1,4 @@
 import React from 'react'
-import { Info, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { connect } from 'react-redux'
 
 import { clearLocalNotifications, setLocalNotification } from "../../utils/helpers"
@@ -23,10 +22,8 @@ class Quiz extends React.Component {
   }
 
   answerQuestion = (response) => {
-    const { currentQuestion } = this.state
     const deckTitle = this.props.navigation.state.params.entryId
     const decks = this.props.decks
-    const correct = decks[deckTitle].questions[currentQuestion].answer.toLowerCase()
     const res = response.toLowerCase()
 
     if (res === 'correct') {
@@ -53,6 +50,10 @@ class Quiz extends React.Component {
     })
   }
 
+  goToDecks = () => {
+    this.props.navigation.navigate('Home')
+  }
+
   render() {
     const { currentQuestion, displayQuestion } = this.state
     const decks = this.props.decks
@@ -66,6 +67,7 @@ class Quiz extends React.Component {
           correct={this.state.correct}
           length={questionsLength}
           restartQuiz={this.restartQuiz}
+          goBack={this.goToDecks}
         />
       )
     } else {
@@ -83,41 +85,6 @@ class Quiz extends React.Component {
     }
   }
 }
-
-const styles = StyleSheet.create({
-  card: {
-    backgroundColor: '#D8BFD8',
-    alignItems: 'center',
-    width: 300,
-    flex: 1
-  },
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  buttonPrimary: {
-    alignItems: 'center',
-    backgroundColor: '#483D8B',
-    height: 40,
-    justifyContent: 'center',
-    marginTop: 20,
-    padding: 10,
-    width: 150,
-  },
-  buttonSecondary: {
-    alignItems: 'center',
-    backgroundColor: '#6A5ACD',
-    height: 40,
-    justifyContent: 'center',
-    marginTop: 20,
-    padding: 10,
-    width: 150,
-  },
-  input: {
-    height: 40, width: 100, borderColor: 'gray', padding: 10, marginTop: 20, borderWidth: 1
-  }
-})
 
 function mapStateToProps(decks) {
   return decks

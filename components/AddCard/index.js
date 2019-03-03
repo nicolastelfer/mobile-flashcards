@@ -3,14 +3,8 @@ import { NavigationActions } from 'react-navigation'
 import { connect } from 'react-redux'
 
 import {
-  themeColorPrimary,
-  themeColorSecondary,
-  themeColorLight } from '../../utils/helpers'
-
-import {
   Button,
   ButtonText,
-  ContainerView,
   FieldSetView,
   Input,
   KeyboardAvoidingView,

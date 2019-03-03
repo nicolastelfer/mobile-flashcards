@@ -16,9 +16,9 @@ export const receiveDecks = (decks) => {
   }
 }
 
-export function removeDeck(title) {
+export function removeDeck(deck) {
   return {
     type: REMOVE_DECK,
-    title
+    deck
   }
 }

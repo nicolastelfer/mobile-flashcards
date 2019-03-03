@@ -1,5 +1,5 @@
 import React from 'react'
-import {Text, TouchableOpacity, StyleSheet, ScrollView, View } from 'react-native'
+import { StyleSheet, ScrollView } from 'react-native'
 import { connect } from 'react-redux'
 import IndividualDeck from "../IndividualDeck"
 
@@ -53,11 +53,6 @@ class DeckDashboard extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1
-  },
-  button: {
-    alignItems: 'center',
-    backgroundColor: '#DDDDDD',
-    padding: 10
   }
 })
 
