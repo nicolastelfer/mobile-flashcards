@@ -1,6 +1,20 @@
 import React from 'react'
 import {Text, TouchableOpacity, StyleSheet, View } from 'react-native'
 
+import {
+  Button,
+  ButtonLink,
+  ButtonText,
+  ButtonLinkText,
+  ContainerView,
+  FieldSetView,
+  Input,
+  KeyboardAvoidingView,
+  Label,
+  TitleH1,
+  TitleH4
+} from '../../utils/styles'
+
 class QuizDetail extends React.Component {
   render() {
     const {
@@ -13,76 +27,37 @@ class QuizDetail extends React.Component {
       toggle
     } = this.props
     return (
-      <View style={styles.container}>
-        <View style={styles.card}>
-          <Text>{currentIndex} / {decks[deckTitle].questions.length}</Text>
+      <ContainerView>
+        <TitleH4>{currentIndex} / {decks[deckTitle].questions.length}</TitleH4>
+        {!displayQuestion ?
+          <TitleH1>{decks[deckTitle].questions[currentQuestion].question}</TitleH1> :
+          <TitleH1>{decks[deckTitle].questions[currentQuestion].answer}</TitleH1>
+        }
+
+        <ButtonLink
+          onPress={toggle}
+        >
           {!displayQuestion ?
-            <Text>{decks[deckTitle].questions[currentQuestion].question}</Text> :
-            <Text>{decks[deckTitle].questions[currentQuestion].answer}</Text>
-          }
+            <ButtonLinkText>Show Answer</ButtonLinkText>
+            : <ButtonLinkText>Show Question</ButtonLinkText>}
+        </ButtonLink>
 
-          <TouchableOpacity
-            style={styles.link}
-            onPress={toggle}
-          >
-            {!displayQuestion ?
-              <Text>Show Answer</Text>
-              : <Text>Show Question</Text>}
-          </TouchableOpacity>
+        <Button
+          buttonTheme='light'
+          onPress={() => answerQuestion('correct')}
+        >
+          <ButtonText>Correct</ButtonText>
+        </Button>
 
-          <TouchableOpacity
-            style={styles.buttonPrimary}
-            onPress={() => answerQuestion('correct')}
-          >
-            <Text>Correct</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            style={styles.buttonSecondary}
-            onPress={() => answerQuestion('incorrect')}
-          >
-            <Text>Incorrect</Text>
-          </TouchableOpacity>
-
-        </View>
-      </View>
+        <Button
+          onPress={() => answerQuestion('incorrect')}
+        >
+          <ButtonText>Incorrect</ButtonText>
+        </Button>
+      </ContainerView>
     )
   }
 }
 
-const styles = StyleSheet.create({
-  card: {
-    backgroundColor: '#D8BFD8',
-    alignItems: 'center',
-    width: 300,
-    flex: 1
-  },
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  buttonPrimary: {
-    alignItems: 'center',
-    backgroundColor: '#483D8B',
-    height: 40,
-    justifyContent: 'center',
-    marginTop: 20,
-    padding: 10,
-    width: 150,
-  },
-  buttonSecondary: {
-    alignItems: 'center',
-    backgroundColor: '#6A5ACD',
-    height: 40,
-    justifyContent: 'center',
-    marginTop: 20,
-    padding: 10,
-    width: 150,
-  },
-  input: {
-    height: 40, width: 100, borderColor: 'gray', padding: 10, marginTop: 20, borderWidth: 1
-  }
-})
 
 export default QuizDetail

@@ -8,8 +8,7 @@ import {
   ContainerView,
   Input,
   Label,
-  TitleH3,
-  TitleH4 } from '../../utils/styles'
+ } from '../../utils/styles'
 
 import { savedDeckTitle } from '../../utils/api'
 import { addDeck } from '../../actions/decks'

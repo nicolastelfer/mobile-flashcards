@@ -29,7 +29,7 @@ class Quiz extends React.Component {
     const correct = decks[deckTitle].questions[currentQuestion].answer.toLowerCase()
     const res = response.toLowerCase()
 
-    if (res === correct) {
+    if (res === 'correct') {
       this.setState({ correct: this.state.correct + 1 })
     } else {
       this.setState({ incorrect: this.state.incorrect + 1 })

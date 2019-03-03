@@ -10,6 +10,7 @@ export const themeColorLight = '#FFFFFF'
 export const themeColorPrimary = '#483D8B'
 export const themeColorSecondary = '#6A5ACD'
 export const themeColorTertiary = '#E6E6FA'
+export const themeColorQuaternary = '#7B68EE'
 
 export const themeColorGreyPrimary = '#D3D3D3'
 export const themeColorGreySecondary = '#708090'

@@ -18,7 +18,7 @@ const DeckCard = ({ deck, title, questions, props }) => {
     <DeckCardView>
       <DeckCardTitleView>
         <TitleH3>{title}</TitleH3>
-        <TitleH4>{questions.length}</TitleH4>
+        <TitleH4>Cards: {questions.length}</TitleH4>
       </DeckCardTitleView>
       <DeckCardButtonView onPress={() => props.navigation.navigate('IndividualDeck', { entryId: deck })}>
         <ButtonText>Go!</ButtonText>

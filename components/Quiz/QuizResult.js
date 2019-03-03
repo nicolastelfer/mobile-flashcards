@@ -1,40 +1,49 @@
 import React from 'react'
 import {Text, TouchableOpacity, StyleSheet, View } from 'react-native'
+import {
+  Button,
+  ButtonLink,
+  ButtonText,
+  ButtonLinkText,
+  ContainerView,
+  FieldSetView,
+  Input,
+  KeyboardAvoidingView,
+  Label,
+  TitleH1,
+  TitleH3,
+  TitleH4
+} from '../../utils/styles'
 
-const TryAgain = ({ onPress }) => {
-
-  return (
-    <View>
-      <Text>Try Again</Text>
-      <TouchableOpacity onPress={onPress}>
-        <Text>Restart Quiz</Text>
-      </TouchableOpacity>
-    </View>
-  )
-}
 
 const ResultsMessage = (props) => {
-  const { score, restartQuiz } = props
+  const { score } = props
   if (score > 80) {
-    return <Text>Well Done!</Text>
+    return
+      <Label>Well Done!</Label>
   } else if (score < 50) {
-    return <TryAgain onPress={restartQuiz}/>
+    return <Label>Could do better!</Label>
   } else {
-    return <Text>Good Effort!</Text>
+    return <Label>Good Effort!</Label>
   }
 }
 
 class QuizResult extends React.Component {
+  goBack = () => {
+
+  }
+
   render() {
     const { correct, length, restartQuiz } = this.props
     return (
-      <View style={styles.container}>
-        <View style={styles.card}>
-          <Text>You finished!</Text>
-          <Text>You got {Math.round((correct/length)*100)}% of the correct answers!</Text>
-          <ResultsMessage score={Math.round((correct/length)*100)} restartQuiz={restartQuiz} />
-        </View>
-      </View>
+      <ContainerView>
+        <TitleH1>You finished!</TitleH1>
+        <TitleH4>You marked {Math.round((correct/length)*100)}% of the correct answers!</TitleH4>
+        <ResultsMessage score={Math.round((correct/length)*100)} />
+        <Button onPress={restartQuiz}>
+          <ButtonText>Restart Quiz</ButtonText>
+        </Button>
+      </ContainerView>
     )
   }
 }

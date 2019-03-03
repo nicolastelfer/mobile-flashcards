@@ -7,10 +7,19 @@ import {
   themeColorLight,
   themeColorGreyPrimary,
   themeColorGreySecondary,
-  themeColorGreyTertiary
+  themeColorGreyTertiary,
+  themeColorQuaternary
 } from './helpers'
 
 export const ContainerView = styled.View`
+  align-items: center;
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+  padding: 0 5%;
+`
+
+export const KeyboardAvoidingView = styled.KeyboardAvoidingView`
   align-items: center;
   display: flex;
   flex-grow: 1;
@@ -28,6 +37,13 @@ export const DeckCardView = styled.View`
   flex-direction: row;
 `
 
+export const FieldSetView = styled.View`
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+`
+
 export const DeckCardTitleView = styled.View`
   flex-grow: 1;
 `
@@ -43,6 +59,12 @@ export const DeckCardButtonView = styled.TouchableOpacity`
   width: 50px;
 `
 
+export const TitleH1 = styled.Text`
+  font-size: 24px;
+  font-weight: bold;
+  color: black;
+`;
+
 export const TitleH3 = styled.Text`
   font-size: 18px;
   font-weight: bold;
@@ -56,17 +78,34 @@ export const TitleH4 = styled.Text`
 
 export const Button = styled.TouchableOpacity`
   align-items: center;
-  background: ${props => props.buttonStatus === true ? themeColorGreyPrimary : themeColorPrimary};
+  background: ${props => 
+    props.buttonTheme === 'lighter' ? themeColorQuaternary
+      : props.buttonTheme === 'light' ? themeColorSecondary : themeColorPrimary};
   display: flex;
   justify-content: center;
   height: 50px;
   margin-top: 20px;
+  opacity: ${props => props.buttonStatus === true ? 0.5 : 1}
   padding: 10px 40px;
-  
-  &:disabled {
-    background: green;
-  }
+  width: 100%;
 `
+
+export const ButtonLink = styled.TouchableOpacity`
+  border: 1px solid ${themeColorPrimary};
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+  margin-top: 20px;
+  padding: 10px;
+  width: 100%;
+`
+
+export const ButtonLinkText = styled.Text`
+  font-weight: bold;
+  color: ${themeColorPrimary};
+  text-transform: uppercase;
+`;
 
 export const ButtonText = styled.Text`
   font-weight: bold;

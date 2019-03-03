@@ -3,6 +3,18 @@ import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import {NavigationActions} from "react-navigation";
 import { connect } from 'react-redux'
 
+import {
+  Button,
+  ButtonText,
+  ContainerView,
+  FieldSetView,
+  Input,
+  KeyboardAvoidingView,
+  Label,
+  TitleH1,
+  TitleH4
+} from '../../utils/styles'
+
 import AddCard from '../AddCard'
 import { removeDeck } from '../../actions/decks'
 import { removeFromDeck } from "../../utils/api";
@@ -29,30 +41,35 @@ class IndividualDeck extends React.Component {
     const { decks } = this.props
 
     return (
-      <View style={styles.container}>
-        <Text>{decks[name].title}</Text>
-        <Text>{decks[name].questions.length}</Text>
+      <ContainerView>
+        <TitleH1>{decks[name].title}</TitleH1>
+        <TitleH4>Cards: {decks[name].questions.length}</TitleH4>
 
-        <TouchableOpacity style={styles.buttonPrimary} onPress={() => this.props.navigation.navigate(
+        <Button
+          onPress={() => this.props.navigation.navigate(
           'AddCard',
           {entryId: name}
         )}>
-          <Text style={{ color: 'white' }}>Add Card</Text>
-        </TouchableOpacity>
+          <ButtonText>Add Card</ButtonText>
+        </Button>
         {decks[name].questions.length > 0
           ? (
-            <TouchableOpacity style={styles.buttonSecondary} onPress={() => this.handleStartQuiz(name)}>
-              <Text style={{ color: 'white' }}>Start Quiz</Text>
-            </TouchableOpacity>
+            <Button
+              buttonTheme='light'
+              onPress={() => this.handleStartQuiz(name)}>
+              <ButtonText>Start Quiz</ButtonText>
+            </Button>
           )
           : null
         }
 
-        <TouchableOpacity style={styles.buttonPrimary} onPress={() => this.handleRemoveQuiz(name)}>
-          <Text style={{ color: 'white' }}>Remove Deck</Text>
-        </TouchableOpacity>
+        <Button
+          buttonTheme='lighter'
+          onPress={() => this.handleRemoveQuiz(name)}>
+          <ButtonText>Remove Deck</ButtonText>
+        </Button>
 
-      </View>
+      </ContainerView>
     )
   }
 }
