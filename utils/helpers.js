@@ -10,6 +10,7 @@ import { AsyncStorage } from 'react-native'
 export const themeColorLight = '#FFFFFF'
 export const themeColorPrimary = '#483D8B'
 export const themeColorSecondary = '#6A5ACD'
+export const themeColorTerciary = '#E6E6FA'
 
 // Storage Key
 export const DECKS_STORAGE_KEY = 'flashcards: decks'

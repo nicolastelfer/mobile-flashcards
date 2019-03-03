@@ -1,10 +1,26 @@
 import React from 'react'
 import {Text, TouchableOpacity, StyleSheet, ScrollView, View } from 'react-native'
 import { connect } from 'react-redux'
-
 import IndividualDeck from "../IndividualDeck"
 
 import { handleInitialData } from "../../actions/shared"
+
+import { ButtonText, DeckCardView, DeckCardTitleView, DeckCardButtonView, TitleH3, TitleH4 } from '../../utils/styles'
+
+
+const DeckCard = ({ deck, title, questions, props }) => {
+  return (
+    <DeckCardView>
+      <DeckCardTitleView>
+        <TitleH3>{title}</TitleH3>
+        <TitleH4>{questions.length}</TitleH4>
+      </DeckCardTitleView>
+      <DeckCardButtonView onPress={() => props.navigation.navigate('IndividualDeck', { entryId: deck })}>
+        <ButtonText>Go!</ButtonText>
+      </DeckCardButtonView>
+    </DeckCardView>
+  )
+}
 
 class DeckDashboard extends React.Component {
   componentDidMount() {
@@ -19,19 +35,9 @@ class DeckDashboard extends React.Component {
         {
           Object.keys(decks).map((deck) => {
             const { title, questions } = decks[deck]
-              return (
-                <View key={deck}>
-                  <Text>{title}</Text>
-                  <Text>{questions.length}</Text>
-
-                  <TouchableOpacity
-                    style={styles.button}
-                    onPress={() => this.props.navigation.navigate('IndividualDeck', { entryId: deck })}
-                  >
-                    <Text>View Deck</Text>
-                  </TouchableOpacity>
-                </View>
-              )
+            return (
+              <DeckCard key={deck} deck={deck} title={title} questions={questions} props={this.props} />
+            )
           })
         }
       </ScrollView>
