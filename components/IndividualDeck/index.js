@@ -29,7 +29,6 @@ class IndividualDeck extends React.Component {
 
   handleRemoveQuiz = (deck) => {
     const { dispatch, navigation, decks } = this.props
-    console.log(decks[deck.title], deck.title)
 
     removeFromDeck(deck.title)
 
@@ -75,34 +74,6 @@ class IndividualDeck extends React.Component {
     )
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  buttonPrimary: {
-    alignItems: 'center',
-    backgroundColor: '#483D8B',
-    color: '#fff',
-    height: 40,
-    justifyContent: 'center',
-    marginTop: 20,
-    padding: 10,
-    width: 150,
-  },
-  buttonSecondary: {
-    alignItems: 'center',
-    backgroundColor: '#6A5ACD',
-    height: 40,
-    justifyContent: 'center',
-    marginTop: 20,
-    padding: 10,
-    width: 150,
-  }
-})
 
 function mapStateToProps(decks) {
   return decks

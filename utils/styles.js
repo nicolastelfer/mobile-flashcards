@@ -11,6 +11,17 @@ import {
   themeColorQuaternary
 } from './helpers'
 
+export const AppView = styled.View`
+  align-items: center;
+  display: flex;
+  justify-content: center;
+`
+
+export const AppContainerView = styled.View`
+  height: 100%;
+  width: 100%;
+`
+
 export const ContainerView = styled.View`
   align-items: center;
   display: flex;

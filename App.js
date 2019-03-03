@@ -1,8 +1,11 @@
 import React from 'react'
 import { StyleSheet, Platform, View } from 'react-native'
-import styled from 'styled-components/native'
 import { createBottomTabNavigator, createAppContainer, createStackNavigator } from 'react-navigation'
 import { themeColorPrimary, themeColorSecondary, themeColorLight } from './utils/helpers'
+import {
+  AppView,
+  AppContainerView,
+} from './utils/styles'
 
 // Redux imports
 import { createStore } from 'redux'
@@ -112,21 +115,6 @@ const MainNavigator = createAppContainer(StackNavigator)
 // Create the Redux Store using the defined Root Reducer and Middleware function(s)
 const store = createStore(reducer, middleware)
 
-// Styles
-const CenterView = styled.View`
-  align-items: center;
-  justify-content: center;
-  display: flex;
-  background: red
-`
-
-const ContainerView = styled.View`
-  background: blue;
-  height: 100%;
-  width: 100%;
-  border: 1px solid blue;
-`
-
 export default class App extends React.Component {
   componentDidMount() {
     setLocalNotification()
@@ -135,22 +123,12 @@ export default class App extends React.Component {
   render() {
     return (
       <Provider store={store}>
-        <CenterView>
-          <ContainerView>
+        <AppView>
+          <AppContainerView>
             <MainNavigator/>
-          </ContainerView>
-        </CenterView>
+          </AppContainerView>
+        </AppView>
       </Provider>
     )
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: themeColorLight,
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'flex-end',
-    alignItems: 'flex-start',
-  }
-})

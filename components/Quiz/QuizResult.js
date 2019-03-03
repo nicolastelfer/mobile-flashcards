@@ -12,8 +12,7 @@ import {
 const ResultsMessage = (props) => {
   const { score } = props
   if (score > 80) {
-    return
-      <Label>Well Done!</Label>
+    return <Label>Well Done!</Label>
   } else if (score < 50) {
     return <Label>Could do better!</Label>
   } else {

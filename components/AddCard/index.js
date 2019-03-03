@@ -35,9 +35,8 @@ class AddCard extends React.Component {
     this.setState({ question: '', answer: '' })
 
     addCardToDeck(title, card)
-      .then(() => {
-        navigation.dispatch(NavigationActions.back({ key: null }))
-      })
+
+    navigation.dispatch(NavigationActions.back({ key: null }))
   }
 
   handleOnChange = () => {
