@@ -39,10 +39,18 @@ class Quiz extends React.Component {
 
     // Check if it's last quiz question and set new notification form tomorrow
     if (this.state.currentQuestion + 1 === decks[deckTitle].questions.length) {
-      console.log('NEW NOTFICATION!')
       clearLocalNotifications()
         .then(setLocalNotification)
     }
+  }
+
+  restartQuiz = () => {
+    this.setState({
+      currentQuestion: 0,
+      displayQuestion: false,
+      correct: 0,
+      incorrect: 0
+    })
   }
 
   render() {
@@ -56,7 +64,9 @@ class Quiz extends React.Component {
       return (
         <QuizResult
           correct={this.state.correct}
-          length={questionsLength} />
+          length={questionsLength}
+          restartQuiz={this.restartQuiz}
+        />
       )
     } else {
       return(

@@ -1,18 +1,38 @@
 import React from 'react'
 import {Text, TouchableOpacity, StyleSheet, View } from 'react-native'
 
+const TryAgain = ({ onPress }) => {
+
+  return (
+    <View>
+      <Text>Try Again</Text>
+      <TouchableOpacity onPress={onPress}>
+        <Text>Restart Quiz</Text>
+      </TouchableOpacity>
+    </View>
+  )
+}
+
+const ResultsMessage = (props) => {
+  const { score, restartQuiz } = props
+  if (score > 80) {
+    return <Text>Well Done!</Text>
+  } else if (score < 50) {
+    return <TryAgain onPress={restartQuiz}/>
+  } else {
+    return <Text>Good Effort!</Text>
+  }
+}
+
 class QuizResult extends React.Component {
   render() {
-    const { correct, length } = this.props
+    const { correct, length, restartQuiz } = this.props
     return (
       <View style={styles.container}>
         <View style={styles.card}>
           <Text>You finished!</Text>
           <Text>You got {Math.round((correct/length)*100)}% of the correct answers!</Text>
-          {Math.round((correct/length)*100) > 80
-            ? <Text>Well done!</Text>
-            : <Text>Try Again</Text>
-          }
+          <ResultsMessage score={Math.round((correct/length)*100)} restartQuiz={restartQuiz} />
         </View>
       </View>
     )
