@@ -10,11 +10,14 @@ import { Provider } from 'react-redux'
 import reducer from './reducers'
 import middleware from './middleware'
 
+import { setLocalNotification } from "./utils/helpers"
+
 // Imports Components
 import DeckDashboard from './components/DeckDashboard'
 import AddCard from './components/AddCard'
 import AddDeck from './components/AddDeck'
 import IndividualDeck from './components/IndividualDeck'
+import Quiz from './components/Quiz'
 
 // Imports Material UI icons
 import { MaterialIcons } from '@expo/vector-icons'
@@ -64,6 +67,12 @@ const StackNavigator = createStackNavigator({
     navigationOptions: {
       title: 'Add Card',
     }
+  },
+  Quiz: {
+    screen: Quiz,
+    navigationOptions: {
+      title: 'Quiz',
+    }
   }
 })
 
@@ -74,6 +83,10 @@ const MainNavigator = createAppContainer(StackNavigator)
 const store = createStore(reducer, middleware)
 
 export default class App extends React.Component {
+  componentDidMount() {
+    setLocalNotification()
+  }
+
   render() {
     return (
       <Provider store={store}>

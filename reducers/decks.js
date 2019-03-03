@@ -1,4 +1,12 @@
-import { ADD_DECK, ADD_CARD_TO_DECK, RECEIVE_DECKS} from "../actions/types"
+import { ADD_DECK, ADD_CARD_TO_DECK, RECEIVE_DECKS, REMOVE_DECK } from "../actions/types"
+
+const deleteKey = (obj, key) => {
+  if (obj) {
+    delete obj[key]
+  }
+  return obj
+}
+
 
 function decks (state = {}, action) {
   switch (action.type) {
@@ -15,7 +23,7 @@ function decks (state = {}, action) {
       }
     case ADD_CARD_TO_DECK :
       const { title, card } = action
-      
+
       return {
         ...state,
         [title]: {
@@ -27,6 +35,13 @@ function decks (state = {}, action) {
       return {
         ...state,
         ...action.decks
+      }
+    case REMOVE_DECK :
+      return {
+        ...state,
+        decks: {
+          ...deleteKey(state.decks, action.title)
+        }
       }
     default :
       return state
