@@ -1,6 +1,15 @@
 import React from 'react'
-import { Button, Text, TextInput, TouchableOpacity, StyleSheet, View } from 'react-native'
+import { Text, TextInput, TouchableOpacity, StyleSheet, View } from 'react-native'
 import { connect } from 'react-redux'
+
+import {
+  Button,
+  ButtonText,
+  ContainerView,
+  Input,
+  Label,
+  TitleH3,
+  TitleH4 } from '../../utils/styles'
 
 import { savedDeckTitle } from '../../utils/api'
 import { addDeck } from '../../actions/decks'
@@ -8,6 +17,7 @@ import { addDeck } from '../../actions/decks'
 class AddDeck extends React.Component {
 
   state = {
+    buttonStateHolder: true,
     text: ''
   }
 
@@ -26,20 +36,32 @@ class AddDeck extends React.Component {
 
   }
 
-  render() {
-    const { text } = this.state
-    return (
-      <View style={styles.container}>
-        <Text>Deck name:</Text>
+  handleOnChange = (text) => {
 
-        <TextInput placeholder="Add deck name" style={styles.input} onChangeText={(text) => this.setState({ text: text })} value={text} />
-        <TouchableOpacity
-          style={styles.buttonPrimary}
+    this.setState({
+      buttonStateHolder: (text.length > 0 ? false : true),
+      text: text
+    })
+  }
+
+  render() {
+    const { text, buttonStateHolder } = this.state
+    return (
+      <ContainerView>
+        <Label>Write your Deck's name</Label>
+
+        <Input
+          placeholder="Add deck name"
+          onChangeText={this.handleOnChange}
+          value={text} />
+        <Button
           onPress={this.addName}
+          disabled={buttonStateHolder}
+          buttonStatus={buttonStateHolder}
         >
-          <Text>Submit</Text>
-        </TouchableOpacity>
-      </View>
+          <ButtonText>Submit</ButtonText>
+        </Button>
+      </ContainerView>
     )
   }
 }

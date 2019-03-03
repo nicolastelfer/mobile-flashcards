@@ -5,12 +5,15 @@
 import { Notifications, Permissions } from 'expo'
 import { AsyncStorage } from 'react-native'
 
-
 // Colors
 export const themeColorLight = '#FFFFFF'
 export const themeColorPrimary = '#483D8B'
 export const themeColorSecondary = '#6A5ACD'
-export const themeColorTerciary = '#E6E6FA'
+export const themeColorTertiary = '#E6E6FA'
+
+export const themeColorGreyPrimary = '#D3D3D3'
+export const themeColorGreySecondary = '#708090'
+export const themeColorGreyTertiary = '#696969'
 
 // Storage Key
 export const DECKS_STORAGE_KEY = 'flashcards: decks'

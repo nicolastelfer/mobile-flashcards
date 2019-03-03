@@ -25,7 +25,7 @@ import { MaterialIcons } from '@expo/vector-icons'
 
 // Creates each tab
 const Tabs = createBottomTabNavigator({
-  DeckDashboard: {
+  Home: {
     screen: DeckDashboard,
     navigationOptions: {
       tabBarLabel: 'Decks',
@@ -35,6 +35,7 @@ const Tabs = createBottomTabNavigator({
   AddDeck: {
     screen: AddDeck,
     navigationOptions: {
+      title: 'Add Deck',
       tabBarLabel: 'Add Deck',
       tabBarIcon: ({ tintColor }) => <MaterialIcons name='add-box' size={30} color={tintColor} />
     }
@@ -51,11 +52,12 @@ const Tabs = createBottomTabNavigator({
 
 // Creates the stack navigator between screen views
 const StackNavigator = createStackNavigator({
-  DeckDashboard: {
+  Home: {
     screen: Tabs,
     navigationOptions: {
-      title: 'Dashboard',
+      title: 'Your Decks',
       headerTintColor: themeColorLight,
+      headerBackTitle: null,
       headerStyle: {
         backgroundColor: themeColorPrimary
       }
@@ -90,6 +92,17 @@ const StackNavigator = createStackNavigator({
         backgroundColor: themeColorPrimary
       }
     }
+  }
+}, {
+  initialRouteName: 'Home',
+  navigationOptions: {
+    headerTintColor: themeColorPrimary,
+    headerTitleStyle: {
+      fontSize: 22
+    }
+  },
+  cardStyle: {
+    backgroundColor: themeColorLight
   }
 })
 

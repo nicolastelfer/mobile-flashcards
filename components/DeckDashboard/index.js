@@ -5,8 +5,13 @@ import IndividualDeck from "../IndividualDeck"
 
 import { handleInitialData } from "../../actions/shared"
 
-import { ButtonText, DeckCardView, DeckCardTitleView, DeckCardButtonView, TitleH3, TitleH4 } from '../../utils/styles'
-
+import {
+  ButtonText,
+  DeckCardView,
+  DeckCardTitleView,
+  DeckCardButtonView,
+  TitleH3,
+  TitleH4 } from '../../utils/styles'
 
 const DeckCard = ({ deck, title, questions, props }) => {
   return (
