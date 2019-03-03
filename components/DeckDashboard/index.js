@@ -13,6 +13,7 @@ class DeckDashboard extends React.Component {
 
   render() {
     const { decks } = this.props
+
     return (
       <ScrollView style={styles.container}>
         {

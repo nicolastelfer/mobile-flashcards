@@ -1,13 +1,27 @@
 import React from 'react'
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import {NavigationActions} from "react-navigation";
 import { connect } from 'react-redux'
 
 import AddCard from '../AddCard'
+import { removeDeck } from '../../actions/decks'
+import { removeFromDeck } from "../../utils/api";
 
 class IndividualDeck extends React.Component {
 
-  handleStartQuiz = () => {
-    console.log('Start Quiz')
+  handleStartQuiz = (name) => {
+    const { navigation } = this.props
+
+    navigation.navigate('Quiz', { entryId: name })
+  }
+
+  handleRemoveQuiz = (name) => {
+    const { dispatch, navigation, decks } = this.props
+
+    dispatch(removeDeck(name))
+    removeFromDeck(name)
+
+    navigation.dispatch(NavigationActions.back({ key: null }))
   }
 
   render() {
@@ -27,12 +41,17 @@ class IndividualDeck extends React.Component {
         </TouchableOpacity>
         {decks[name].questions.length > 0
           ? (
-            <TouchableOpacity style={styles.buttonSecondary} onPress={this.handleStartQuiz}>
+            <TouchableOpacity style={styles.buttonSecondary} onPress={() => this.handleStartQuiz(name)}>
               <Text style={{ color: 'white' }}>Start Quiz</Text>
             </TouchableOpacity>
           )
           : null
         }
+
+        <TouchableOpacity style={styles.buttonPrimary} onPress={() => this.handleRemoveQuiz(name)}>
+          <Text style={{ color: 'white' }}>Remove Deck</Text>
+        </TouchableOpacity>
+
       </View>
     )
   }
