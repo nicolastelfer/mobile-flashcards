@@ -8,7 +8,6 @@ import {
   TitleH4
 } from '../../utils/styles'
 
-
 const ResultsMessage = (props) => {
   const { score } = props
   if (score > 80) {
@@ -21,7 +20,6 @@ const ResultsMessage = (props) => {
 }
 
 class QuizResult extends React.Component {
-
 
   render() {
     const { correct, length, restartQuiz, goBack } = this.props
@@ -36,7 +34,7 @@ class QuizResult extends React.Component {
         <Button
           buttonTheme='light'
           onPress={goBack}>
-          <ButtonText>Go to your decks</ButtonText>
+          <ButtonText>Go to deck</ButtonText>
         </Button>
       </ContainerView>
     )

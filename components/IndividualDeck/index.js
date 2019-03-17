@@ -1,21 +1,14 @@
 import React from 'react'
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import {NavigationActions} from "react-navigation";
 import { connect } from 'react-redux'
 
 import {
   Button,
   ButtonText,
-  ContainerView,
-  FieldSetView,
-  Input,
-  KeyboardAvoidingView,
-  Label,
-  TitleH1,
-  TitleH4
+  ContainerView
 } from '../../utils/styles'
 
 import AddCard from '../AddCard'
+import DeckViewDetails from '../stateless/DeckViewDetails'
 import { removeDeck } from '../../actions/decks'
 import { removeFromDeck } from "../../utils/api";
 
@@ -28,11 +21,11 @@ class IndividualDeck extends React.Component {
   }
 
   handleRemoveQuiz = (deck) => {
-    const { dispatch, navigation, decks } = this.props
+    const { dispatch, navigation } = this.props
 
-    removeFromDeck(deck.title)
+    removeFromDeck(deck)
 
-    dispatch(removeDeck(deck.title))
+    dispatch(removeDeck(deck))
 
     navigation.dispatch(this.props.navigation.navigate('Home'))
   }
@@ -43,8 +36,7 @@ class IndividualDeck extends React.Component {
 
     return (
       <ContainerView>
-        <TitleH1>{decks[name].title}</TitleH1>
-        <TitleH4>Cards: {decks[name].questions.length}</TitleH4>
+        <DeckViewDetails title={decks[name].title} questions={decks[name].questions} />
 
         <Button
           onPress={() => this.props.navigation.navigate(

@@ -50,8 +50,8 @@ class Quiz extends React.Component {
     })
   }
 
-  goToDecks = () => {
-    this.props.navigation.navigate('Home')
+  goToDeck = (text) => {
+    this.props.navigation.navigate('IndividualDeck', { entryId: text })
   }
 
   render() {
@@ -67,7 +67,7 @@ class Quiz extends React.Component {
           correct={this.state.correct}
           length={questionsLength}
           restartQuiz={this.restartQuiz}
-          goBack={this.goToDecks}
+          goBack={() => this.goToDeck(deckTitle)}
         />
       )
     } else {

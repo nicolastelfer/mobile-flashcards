@@ -11,7 +11,7 @@ import {
   Label,
 } from '../../utils/styles'
 
-import { addCard } from "../../actions/cards";
+import { addCard } from '../../actions/cards';
 import { addCardToDeck } from '../../utils/api'
 
 class AddCard extends React.Component {
@@ -39,15 +39,22 @@ class AddCard extends React.Component {
     navigation.dispatch(NavigationActions.back({ key: null }))
   }
 
-  handleOnChange = () => {
-
-    const { answer, question } = this.state
-
-    if (question !== '' && answer !== '') {
-      this.setState({ buttonStateHolder: false })
-    } else {
-      this.setState({ buttonStateHolder: true })
+  handleOnChange = (e, type) => {
+    // Set the correct state for each type of input value
+    switch (type) {
+      case 'question' :
+        this.setState({ question: e })
+        break
+      case 'answer' :
+        this.setState({ answer: e })
+        break
+      default :
+        return false
     }
+    // Grabs the value of question and answer from the state
+    const { answer, question } = this.state
+    // Sets new state to the button status
+    this.setState({ buttonStateHolder: !(question !== '' && answer !== '') })
   }
 
   render() {
@@ -60,14 +67,14 @@ class AddCard extends React.Component {
           <Label>Question</Label>
           <Input
             placeholder="Add Question"
-            onChangeText={(question) => this.handleOnChange(this.setState({ question: question }))}
+            onChangeText={(e) => this.handleOnChange(e, 'question')}
             value={this.state.question} />
         </FieldSetView>
         <FieldSetView>
           <Label>Answer</Label>
           <Input
             placeholder="Add Answer"
-            onChangeText={(answer) => this.handleOnChange(this.setState({ answer: answer }))}
+            onChangeText={(e) => this.handleOnChange(e, 'answer')}
             value={this.state.answer} />
         </FieldSetView>
         <Button

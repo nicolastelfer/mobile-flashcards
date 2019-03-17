@@ -8,8 +8,6 @@ import { receiveDecks } from './decks'
 export const handleInitialData = () => {
   return (dispatch) => {
     return getDecks()
-      .then((decks) => {
-        dispatch(receiveDecks(decks))
-      })
+      .then((decks) => dispatch(receiveDecks(decks)))
   }
 }

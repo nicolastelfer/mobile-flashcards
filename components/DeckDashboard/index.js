@@ -2,6 +2,7 @@ import React from 'react'
 import { StyleSheet, ScrollView } from 'react-native'
 import { connect } from 'react-redux'
 import IndividualDeck from "../IndividualDeck"
+import DeckViewDetails from '../stateless/DeckViewDetails'
 
 import { handleInitialData } from "../../actions/shared"
 
@@ -9,16 +10,13 @@ import {
   ButtonText,
   DeckCardView,
   DeckCardTitleView,
-  DeckCardButtonView,
-  TitleH3,
-  TitleH4 } from '../../utils/styles'
+  DeckCardButtonView } from '../../utils/styles'
 
 const DeckCard = ({ deck, title, questions, props }) => {
   return (
     <DeckCardView>
       <DeckCardTitleView>
-        <TitleH3>{title}</TitleH3>
-        <TitleH4>Cards: {questions.length}</TitleH4>
+        <DeckViewDetails title={title} questions={questions} />
       </DeckCardTitleView>
       <DeckCardButtonView onPress={() => props.navigation.navigate('IndividualDeck', { entryId: deck })}>
         <ButtonText>Go!</ButtonText>
@@ -29,7 +27,7 @@ const DeckCard = ({ deck, title, questions, props }) => {
 
 class DeckDashboard extends React.Component {
   componentDidMount() {
-    this.props.dispatch(handleInitialData())
+    this.props.dispatch(handleInitialData)
   }
 
   render() {

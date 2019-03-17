@@ -30,7 +30,7 @@ function decks (state = {}, action) {
       }
     case REMOVE_DECK :
       const decks = { ...state }
-      delete decks[action.title]
+      delete decks[action.deck]
       return {
         ...decks
       }

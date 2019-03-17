@@ -16,7 +16,7 @@ This App uses `Expo`(https://expo.io/) to help build this React Native App.
 
 For svg icons, this app uses **expo vector icons**
 
-`$ yarn install @expo/vector-icons --dev`
+`$ yarn add @expo/vector-icons --dev`
 
 **This project was only tested on the iOS simulator.**
 
@@ -48,3 +48,8 @@ With button disabled until fields have a value
 
 #### Quiz Results View
 ![](assets/images/results_view.jpg)
+
+### License
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+For more information, please refer to https://unlicense.org
